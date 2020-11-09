@@ -77,3 +77,5 @@ verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),Di
 verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==domingo, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='mentira'.
 verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==domingo, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='mentira'.
 
+/*las funciones las creamos separadas para asi identificar con mayor precicion el dia y quien dijo la frase verdadera y quienes dijieron las frases
+ * erroneas*/
