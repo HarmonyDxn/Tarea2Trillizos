@@ -1,0 +1,79 @@
+hermano(carlos).
+hermano(alberto).
+hermano(luis).
+
+dia(lunes).
+dia(martes).
+dia(miercoles).
+dia(jueves).
+dia(viernes).
+dia(sabado).
+dia(domingo).
+
+frase('Hoy es el tercer dia que miento').
+frase('Hola, soy alberto').
+frase('Mañana será sabado').
+vom('verdad').
+vom('mentira').
+
+miente(alberto,lunes).
+miente(alberto,martes).
+miente(alberto, miercoles).
+
+miente(carlos,miercoles).
+miente(carlos,jueves).
+miente(carlos,viernes).
+
+miente(luis,viernes).
+miente(luis,sabado).
+miente(luis,domingo).
+
+
+verdad1(alberto,'Mañana será sabado').
+verdad2(alberto,'Hola, soy alberto').
+verdad3(alberto,'Hoy es el tercer dia que miento').
+
+verdad4(carlos,'Hoy es el tercer dia que miento').
+
+verdad5(luis,'Hoy es el tercer dia que miento').
+
+/*la verdad1 la concideramos como la verdadera ya que es la unica que cumple con las condiciones ya que el luis y carlos estan mintiendo el unico dia 
+ * que comparten para mentir y es la unica que cumple a cabalidad los dias que se miente y se dice la verdad*/
+verdad1(Hermano,Dia,Frase,VoM):- hermano(Hermano), Hermano== alberto, dia(Dia), Dia==viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='verdad'.
+verdad1(Hermano,Dia,Frase,VoM):- hermano(Hermano), Hermano== luis, dia(Dia), Dia==viernes, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='mentira'.
+verdad1(Hermano,Dia,Frase,VoM):- hermano(Hermano), Hermano== carlos, dia(Dia), Dia==viernes, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='mentira'.
+
+/* no puede ser verdadera la verdad2 ya que el unico dia que comparten para mentir carlos y luis esta diciendo la verdad*/
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),  Dia\=lunes,Dia\=martes,Dia\=miercoles, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='verdad'.
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia\=lunes,Dia\=martes,Dia\=miercoles,Dia\=viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='mentira'.
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='verdad'.
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia\=lunes,Dia\=martes,Dia\=miercoles, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='mentira'.
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia\=lunes,Dia\=martes,Dia\=miercoles, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='mentira'.
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia\=lunes,Dia\=martes,Dia\=miercoles,Dia\=viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='mentira'.
+verdad2(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia==viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='verdad'.
+
+
+/*no pude ser verdadera la verdad3 ya que alberto esta diciendo la verdad el miercoles cuando se supone que ese dia debe mentir*/
+verdad3(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),  Dia==miercoles, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='verdad'.
+verdad3(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==miercoles, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='mentira'.
+verdad3(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==miercoles, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='mentira'.
+verdad3(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia==miercoles, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='mentira'.
+verdad3(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia==miercoles, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='mentira'.
+
+
+/* no puede ser verdadera la verdad4 ya que carlos esta diciendo la verdad el viernes cuando se supone que ese dia debe mentir*/
+
+verdad4(Hermano,Dia,Frase,VoM):- hermano(Hermano), Hermano== carlos, dia(Dia), Dia==viernes, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='verdad'.
+verdad4(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),Dia==viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='verdad'.
+verdad4(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),Dia==viernes, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='verdad'.
+verdad4(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia==viernes, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='mentira'.
+verdad4(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== luis, dia(Dia),Dia==viernes, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='verdad'.
+
+
+/* no puede ser verdaddera la verdad5 ya que luis esta diciendo la verdad el domingo cuando se supone que ese dia debe mentir*/
+verdad5(Hermano,Dia,Frase,VoM):- hermano(Hermano), Hermano== luis, dia(Dia), Dia==domingo, frase(Frase), Frase=='Hoy es el tercer dia que miento',vom(VoM),VoM=='verdad'.
+verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),Dia==domingo, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='mentira'.
+verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== alberto, dia(Dia),Dia==domingo, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='verdad'.
+verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==domingo, frase(Frase), Frase=='Hola, soy alberto',vom(VoM),VoM=='mentira'.
+verdad5(Hermano,Dia,Frase,VoM):-hermano(Hermano), Hermano== carlos, dia(Dia),Dia==domingo, frase(Frase), Frase=='Mañana será sabado',vom(VoM),VoM=='mentira'.
+
